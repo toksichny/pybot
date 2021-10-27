@@ -1,4 +1,5 @@
 from pyrogram import Client
+from datetime import datetime 
 import shelve
 import random
 import time
@@ -41,17 +42,19 @@ with app:
     
     while True:
         for i in range(len(PUBLIC)):
+            now = datetime.now() 
+            current_time = now.strftime("%H:%M:%S")
             try:
                 public = app.get_chat(PUBLIC[i])
                 chat = public
                 text = random.choice(TEXT)
                 app.send_message(chat.id, text)
-                print(f"Сообщение {text} отправлено в чат {PUBLIC[i]}\nУхожу в откат на 5 минут")
+                print(f"{current_time} Сообщение {text} отправлено в чат {PUBLIC[i]}\n{current_time} Ухожу в откат на 5 минут")
                 time.sleep(300)
             except:
-                print(f"Исключение KeyError. Не смог найти чат {PUBLIC[i]}\n")
+                print(f"{current_time} Исключение KeyError. Не смог найти чат {PUBLIC[i]}\n")
             else:
-                print("Успех! Ошибок не возникло!")
+                print(f"{current_time} Успех! Ошибок не возникло!")
             
-        print("Работа по всем чатам выполнена ухожу в слип на 1 часа")
+        print(f"{current_time} Работа по всем чатам выполнена ухожу в слип на 1 часа")
         time.sleep(3600)
