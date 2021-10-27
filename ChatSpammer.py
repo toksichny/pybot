@@ -37,14 +37,21 @@ TEXT = ["Всем приветик😊",
 
 app = Client("chelik", api_id, api_hash,
              phone_number=phone_number)
-while True:
-    with app:
+with app:
+    
+    while True:
         for i  in range(len(PUBLIC)):
-            public = app.get_chat(PUBLIC[i])
-            chat = public
-            text = random.choice(TEXT)
-            app.send_message(chat.id, text)
-            print(f"Сообщение в чат {PUBLIC[i]} отправлено\nУхожу в откат на 5 минут")
-            time.sleep(60*5)
-        print("Работа по всем чатам выполнена ухожу в слип на 3 часа")
-        time.sleep(60*180)
+            try:
+                public = app.get_chat(PUBLIC[i])
+                chat = public
+                text = random.choice(TEXT)
+                app.send_message(chat.id, text)
+                print(f"Сообщение {text} отправлено в чат {PUBLIC[i]}\nУхожу в откат на 5 минут")
+                time.sleep(300)
+            except:
+                print(f"Исключение KeyError. Не смог найти чат {PUBLIC[i]}\n")
+            else:
+                print("Успех! Ошибок не возникло!")
+            
+        print("Работа по всем чатам выполнена ухожу в слип на 1 часа")
+        time.sleep(3600)
