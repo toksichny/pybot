@@ -13,15 +13,6 @@ import time
  #       "crolchatis","CHAT_3HAKOMCTBA_24_7","CHAT_3HAKOMCTBA_16",
 #        "CHAT_ACQUAINTANCES"]
 
-#print("Введите api_id: ")
-#api_id = input()
-
-#print("Введите api_hash: ")
-#api_hash = input()
-
-#print("Введите phone_number: ")
-#phone_number = input()
-
 print("Введите путь до txt файла с чатами")
 dir = input()
 
@@ -67,6 +58,7 @@ async def main():
                 now = datetime.now() 
                 current_time = now.strftime("%H:%M:%S")
                 try:
+                    await app.join_chat(PUBLIC[i])
                     public = await app.get_chat(PUBLIC[i])
                     chat = public
                     text = random.choice(TEXT)
