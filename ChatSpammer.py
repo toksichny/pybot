@@ -6,12 +6,21 @@ import shelve
 import random
 import time
 
-api_id = 8228878
-api_hash = "8a948f28b11e4146c9e233aa2b2f121d"
-phone_number = '+79630616024'
+#api_id = 8228878
+#api_hash = "8a948f28b11e4146c9e233aa2b2f121d"
+#phone_number = '+79630616024'
 #PUBLIC = ["krasnodar_groupp", "MWchat21", 
  #       "crolchatis","CHAT_3HAKOMCTBA_24_7","CHAT_3HAKOMCTBA_16",
 #        "CHAT_ACQUAINTANCES"]
+
+#print("Введите api_id: ")
+#api_id = input()
+
+#print("Введите api_hash: ")
+#api_hash = input()
+
+#print("Введите phone_number: ")
+#phone_number = input()
 
 print("Введите путь до txt файла с чатами")
 dir = input()
@@ -44,8 +53,8 @@ with open(phrase,encoding='utf-8') as file:
 #        "💕","💞","💗","💖","💘","💝","💟","⛔️","🔞"]
 
 
-app = Client("chelik", api_id, api_hash,
-             phone_number=phone_number)
+app = Client("chelik")#, api_id, api_hash,
+             #phone_number=phone_number)
 
 
 
@@ -71,16 +80,9 @@ async def main():
                     await asyncio.sleep(2)
                 else:
                     print(f"{current_time} Успех! Ошибок не возникло!")
-
-                   #keyboard.press("enter")
-                    #await time.sleep(1)
-                    #keyboard.release("enter")
                 
             print(f"{current_time} Работа по всем чатам выполнена ухожу в слип на 1 часа\nУспешных сообщений отправлено {successsSend}")
             await asyncio.sleep(3600)
             
-            #keyboard.press("enter")
-            #await time.sleep(1)
-            #keyboard.release("enter")
 
 app.run(main())
